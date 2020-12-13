@@ -36,7 +36,7 @@ export const register = () => async (dispatch, getState, client) => {
     })
   } else {
     dispatch({
-      type: actions.clear,
+      type: actions.ok,
     })
   }
 }

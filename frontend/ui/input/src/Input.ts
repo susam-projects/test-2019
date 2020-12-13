@@ -1,7 +1,7 @@
-import { createElement, KeyboardEvent } from 'react'
+import { ChangeEvent, createElement, KeyboardEvent, useCallback } from 'react'
 import Wrapper from './Wrapper'
 import styled from '@emotion/styled'
-import { ifProp } from 'styled-tools'
+import {ifProp} from 'styled-tools'
 
 export interface InputElementProps {
   color?: string
@@ -28,8 +28,8 @@ export interface InputProps extends InputElementProps {
 const InputElement = styled('input', {
   shouldForwardProp: prop =>
     !['borderColor', 'error', 'transparent', 'select'].includes(prop),
-})<WrapperElementProps>(
-  ({ color, borderColor, theme }) => ({
+})<InputElementProps>(
+  ({color, borderColor, theme}) => ({
     width: '100%',
     height: 40,
     boxSizing: 'border-box',
@@ -60,11 +60,11 @@ const InputElement = styled('input', {
       backgroundColor: `${theme.colors.white}`,
     },
   }),
-  ifProp('disabled', ({ theme }: any) => ({
+  ifProp('disabled', ({theme}: any) => ({
     border: `1px solid ${theme.colors.blueHaze}`,
     color: `${theme.colors.blueHaze}`,
   })),
-  ifProp('error', ({ theme }: any) => ({
+  ifProp('error', ({theme}: any) => ({
     borderColor: `${theme.colors.red}`,
     [':hover']: {
       borderColor: `${theme.colors.red}`,
@@ -73,7 +73,7 @@ const InputElement = styled('input', {
       borderColor: `${theme.colors.red}`,
     },
   })),
-  ifProp('warning', ({ theme }: any) => ({
+  ifProp('warning', ({theme}: any) => ({
     borderColor: `${theme.colors.orange}`,
     [':hover']: {
       borderColor: `${theme.colors.orange}`,
@@ -93,7 +93,7 @@ const InputElement = styled('input', {
       backgroundColor: 'transparent',
       border: 'none',
     },
-  })
+  }),
 )
 
 const Input = ({
@@ -107,8 +107,23 @@ const Input = ({
   onKeyPress,
   onEnter,
   ...props
-}: InputProps) =>
-  createElement(
+}: InputProps) => {
+
+  const handleChange = useCallback(({ target }: ChangeEvent<HTMLInputElement>) => {
+    onChange(target.value)
+  }, [onChange])
+
+  const handleKeyPress = useCallback((event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter' && onEnter) {
+      onEnter()
+    }
+
+    if (onKeyPress) {
+      onKeyPress(event)
+    }
+  }, [onEnter, onKeyPress])
+
+  return createElement(
     Wrapper,
     {},
     createElement(InputElement, {
@@ -118,19 +133,12 @@ const Input = ({
       value,
       placeholder,
       readOnly,
-      onChange: ({ target }) => onChange(target.value),
-      onKeyPress: event => {
-        if (event.key === 'Enter' && onEnter) {
-          onEnter()
-        }
-
-        if (onKeyPress) {
-          onKeyPress(event)
-        }
-      },
+      onChange: handleChange,
+      onKeyPress: handleKeyPress,
       ...props,
-    })
+    }),
   )
+}
 
 Input.defaultProps = {
   color: 'blueBayoux',
