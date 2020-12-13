@@ -79,6 +79,7 @@ export const resolve = {
     '@frontend/common': '@frontend/common/src',
     '@frontend/users': '@frontend/users/src',
     '@frontend/utils': '@frontend/utils/src',
+    '@frontend/profile': '@frontend/profile/src',
     // '@ui/button': '@ui/button/src',
     // '@ui/header': '@ui/header/src',
     // '@ui/input': '@ui/input/src',

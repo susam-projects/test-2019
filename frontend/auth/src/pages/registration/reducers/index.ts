@@ -11,7 +11,6 @@ interface State {
   password: string
   confirmPassword: string
   errors: Errors,
-  state: null | 'registering' | 'registered' | 'error',
 }
 
 const initialState: State = {
@@ -19,7 +18,6 @@ const initialState: State = {
   password: '',
   confirmPassword: '',
   errors: {},
-  state: null,
 }
 
 export default createReducer(initialState, {
@@ -33,5 +31,4 @@ export default createReducer(initialState, {
   }),
   [actions.setErrors]: (state, { errors }) => ({ ...state, errors }),
   [actions.clear]: () => initialState,
-  [actions.registered]: state => ({ ...state, state: 'registered' }),
 })

@@ -18,6 +18,7 @@
       "@frontend/auth/*": ["./node_modules/@frontend/auth/src/*"],
       "@frontend/common/*": ["./node_modules/@frontend/common/src/*"],
       "@frontend/users/*": ["./node_modules/@frontend/users/src/*"],
+      "@frontend/profile/*": ["./node_modules/@frontend/profile/src/*"],
       "@frontend/utils/*": ["./node_modules/@frontend/utils/src/*"]
     }
   }

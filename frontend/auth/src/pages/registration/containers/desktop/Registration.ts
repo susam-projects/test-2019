@@ -8,7 +8,6 @@ export default connect(
     errors: state.auth.registration.errors,
     password: state.auth.registration.password,
     confirmPassword: state.auth.registration.confirmPassword,
-    state: state.auth.registration.state,
   }),
   dispatch => ({
     onRegister: () => dispatch(register()),
