@@ -1,33 +1,19 @@
+import { OptionHTMLAttributes } from 'react'
 import { switchProp } from 'styled-tools'
 import styled from '@emotion/styled'
 
-export interface OptionProps {
-  size?: string
-  lineHeight?: 'xs' | 's' | 'm' | 'l'
-  weight?: 'light' | 'normal' | 'medium' | 'bold'
+export interface OptionProps extends OptionHTMLAttributes<HTMLOptionElement> {
   color?: string
-  align?: 'left' | 'center' | 'right'
   transform?: 'uppercase' | 'lowercase'
 }
 
 const Option = styled.option<OptionProps>(
-  ({ theme, lineHeight, color, size, weight }) => ({
+  ({ theme, color }) => ({
     fontFamily: theme.fontFamily.sf,
-    fontWeight: theme.fontWeights[weight],
-    fontSize: theme.fontSizes[size],
-    lineHeight: theme.lineHeights[lineHeight],
+    fontWeight: theme.fontWeights.normal,
+    fontSize: theme.fontSizes.n,
+    lineHeight: theme.lineHeights.m,
     color: theme.colors[color],
-  }),
-  switchProp('align', {
-    left: {
-      textAlign: 'left',
-    },
-    center: {
-      textAlign: 'center',
-    },
-    right: {
-      textAlign: 'right',
-    },
   }),
   switchProp('transform', {
     uppercase: {
@@ -40,12 +26,7 @@ const Option = styled.option<OptionProps>(
 )
 
 Option.defaultProps = {
-  lineHeight: 'm',
   color: 'black',
-  size: 'n',
-  weight: 'normal',
-  align: 'left',
-  display: 'inlineFlex',
 }
 
 export { Option }

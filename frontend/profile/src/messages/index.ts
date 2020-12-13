@@ -19,4 +19,12 @@ export default defineMessages({
     id: `${namespace}.lastNamePlaceholder`,
     defaultMessage: 'Ваша фамилия',
   },
+  saveChanges: {
+    id: `${namespace}.saveChanges`,
+    defaultMessage: 'Сохранить изменения',
+  },
+  cancel: {
+    id: `${namespace}.cancel`,
+    defaultMessage: 'Отменить',
+  },
 })

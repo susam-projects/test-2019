@@ -30,10 +30,7 @@ export const load = () => async (dispatch, getState, client) => {
       list: stub,
     })
 
-    dispatch({
-      type: actions.sort,
-      field: 'name',
-    })
+    dispatch(sort('name'))
   }
 }
 

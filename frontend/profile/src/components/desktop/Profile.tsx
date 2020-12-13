@@ -1,11 +1,11 @@
-import { Button } from "@ui/button";
-import { Input } from "@ui/input";
-import { RouteLink } from "@ui/link";
+import { Button } from '@ui/button';
+import { Input } from '@ui/input';
+import { RouteLink } from '@ui/link';
 import React, { FC } from 'react'
 import { Column, Layout, Row } from '@ui/layout'
 import { Text } from '@ui/text'
-import { InjectedIntl, injectIntl } from "react-intl";
-import messages from "../../messages";
+import { InjectedIntl, injectIntl } from 'react-intl';
+import messages from '../../messages';
 
 interface Props {
   defaultProfile?: any
@@ -59,6 +59,7 @@ const ProfileDesktop: FC<Props> = ({
           border='lightGray'
           error={errors.firstName}
           value={firstName || ''}
+          onEnter={onSave}
           onChange={onChangeFirstName}
           placeholder={intl.formatMessage(messages.firstNamePlaceholder)}
         />
@@ -79,6 +80,7 @@ const ProfileDesktop: FC<Props> = ({
           border='lightGray'
           error={errors.lastName}
           value={lastName || ''}
+          onEnter={onSave}
           onChange={onChangeLastName}
           placeholder={intl.formatMessage(messages.lastNamePlaceholder)}
         />
@@ -89,7 +91,7 @@ const ProfileDesktop: FC<Props> = ({
         <Layout basis='10%' />
         <Layout basis={200}>
           <Button text onClick={onSave}>
-            Сохранить изменения
+            {intl.formatMessage(messages.saveChanges)}
           </Button>
         </Layout>
         <Layout basis={24} />
@@ -103,7 +105,7 @@ const ProfileDesktop: FC<Props> = ({
             hoverColor='blueBayoux'
             onClick={onCancel}
           >
-            Отменить
+            {intl.formatMessage(messages.cancel)}
           </RouteLink>
         </Layout>
       </Row>

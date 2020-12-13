@@ -28,11 +28,11 @@ const List = ({ rows, intl, onSortChange }: Props) => (
       <Layout basis={20} />
       <Layout basis={300}>
         <Select onChange={onSortChange} defaultValue={'name'}>
-          <Option value={'id'}>id</Option>
-          <Option value={'name'}>имени</Option>
-          <Option value={'email'}>email</Option>
-          <Option value={'registeredAt'}>дате регистрации</Option>
-          <Option value={'lastLogonAt'}>дате последнего входа</Option>
+          <Option value={'id'}>{intl.formatMessage(messages.sortById)}</Option>
+          <Option value={'name'}>{intl.formatMessage(messages.sortByName)}</Option>
+          <Option value={'email'}>{intl.formatMessage(messages.sortByEmail)}</Option>
+          <Option value={'registeredAt'}>{intl.formatMessage(messages.sortByRegisteredAt)}</Option>
+          <Option value={'lastLogonAt'}>{intl.formatMessage(messages.sortByLastLogonAt)}</Option>
         </Select>
       </Layout>
       <Layout basis='10%' />

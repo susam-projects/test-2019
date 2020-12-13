@@ -11,6 +11,26 @@ export default defineMessages({
     id: `${namespace}.sortBy`,
     defaultMessage: 'Сортировать по',
   },
+  sortById: {
+    id: `${namespace}.sortById`,
+    defaultMessage: 'id',
+  },
+  sortByName: {
+    id: `${namespace}.sortByName`,
+    defaultMessage: 'имени',
+  },
+  sortByEmail: {
+    id: `${namespace}.sortByEmail`,
+    defaultMessage: 'email',
+  },
+  sortByRegisteredAt: {
+    id: `${namespace}.sortByRegisteredAt`,
+    defaultMessage: 'дате регистрации',
+  },
+  sortByLastLogonAt: {
+    id: `${namespace}.sortByLastLogonAt`,
+    defaultMessage: 'дате последнего входа',
+  },
   at: {
     id: `${namespace}.at`,
     defaultMessage: 'в',

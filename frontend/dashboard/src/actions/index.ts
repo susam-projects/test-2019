@@ -29,14 +29,16 @@ export const init = () => async (dispatch, getState, client) => {
       `,
     })
   } catch (e) {
-    dispatch({
-      type: actions.load,
-      user: stub,
-    })
+    dispatch(load(stub))
   }
 }
 
-export const updateProfile = (profile) => ({
+export const load = user => ({
+  type: actions.load,
+  user,
+})
+
+export const updateProfile = profile => ({
   type: actions.updateProfile,
   profile,
 })

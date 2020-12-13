@@ -1,4 +1,4 @@
-import { auth } from '@frontend/common/constants/security'
+import { auth } from '@frontend/common/actions/security';
 import gql from 'graphql-tag'
 import stub from './stub'
 import * as actions from '../constants'
@@ -33,44 +33,37 @@ export const register = () => async (dispatch, getState, client) => {
     })
 
     if (data.register.errors) {
-      dispatch({
-        type: actions.setErrors,
-        errors: data.register.errors,
-      })
+      dispatch(setErrors(data.register.errors))
 
     } else {
-      dispatch({
-        type: auth,
+      dispatch(auth({
         token: stub.token,
         expiresIn: stub.expiresIn,
-      })
-
-      dispatch({
-        type: actions.clear,
-      })
+      }))
+      dispatch(clear())
     }
 
   } catch (e) {
-    dispatch({
-      type: actions.setErrors,
-      errors: {
-        email: e.message,
-        password: e.message,
-      },
-    })
+    dispatch(setErrors({
+      email: e.message,
+      password: e.message,
+    }))
 
+    // just to give some time to see the errors
     setTimeout(() => {
-      dispatch({
-        type: auth,
+      dispatch(auth({
         token: stub.token,
         expiresIn: stub.expiresIn,
-      })
-      dispatch({
-        type: actions.clear,
-      })
+      }))
+      dispatch(clear())
     }, 800)
   }
 }
+
+export const setErrors = errors => ({
+  type: actions.setErrors,
+  errors: { ...errors },
+})
 
 export const clear = () => ({
   type: actions.clear,
