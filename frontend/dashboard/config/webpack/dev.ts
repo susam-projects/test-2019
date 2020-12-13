@@ -2,6 +2,7 @@ import webpack from 'webpack'
 import autoprefixer from 'autoprefixer'
 import htmlTemplate from 'html-webpack-template'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
 
 export const mode = 'development'
 
@@ -33,6 +34,7 @@ export const module = {
                     browsers: '> 0.25%, not dead',
                   },
                   useBuiltIns: 'usage',
+                  corejs: 2,
                   modules: false,
                 },
               ],
@@ -74,20 +76,12 @@ export const module = {
 
 export const resolve = {
   extensions: ['.ts', '.tsx', '.js', '.json'],
-  alias: {
-    '@frontend/auth': '@frontend/auth/src',
-    '@frontend/common': '@frontend/common/src',
-    '@frontend/users': '@frontend/users/src',
-    '@frontend/utils': '@frontend/utils/src',
-    '@frontend/profile': '@frontend/profile/src',
-    // '@ui/button': '@ui/button/src',
-    // '@ui/header': '@ui/header/src',
-    // '@ui/input': '@ui/input/src',
-    // '@ui/layout': '@ui/layout/src',
-    // '@ui/link': '@ui/link/src',
-    // '@ui/text': '@ui/text/src',
-    // '@ui/theme': '@ui/theme/src',
-  },
+  plugins: [
+    new TsconfigPathsPlugin({
+      configFile: './tsconfig.json',
+      logLevel: 'INFO',
+    }),
+  ],
 }
 
 export const plugins = [

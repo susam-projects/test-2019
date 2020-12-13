@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "gateway:dev": "yarn workspace @backend/gateway dev",
-    "dashboard:dev": "yarn workspace @frontend/dashboard dev",
+    "build": "yarn workspace @frontend/dashboard build",
+    "start": "yarn workspace @frontend/dashboard dev",
     "typecheck": "lerna run typecheck",
     "lint": "tslint --project tsconfig.json -c tslint.json -t codeFrame backend/**/*.ts"
   },

@@ -7,6 +7,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
 
 export const mode = 'production'
 
@@ -132,6 +133,12 @@ export const module = {
 
 export const resolve = {
   extensions: ['.ts', '.tsx', '.js', '.json'],
+  plugins: [
+    new TsconfigPathsPlugin({
+      configFile: './tsconfig.json',
+      logLevel: 'INFO',
+    }),
+  ],
 }
 
 export const plugins = [
