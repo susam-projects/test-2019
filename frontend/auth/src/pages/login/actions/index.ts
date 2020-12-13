@@ -1,5 +1,5 @@
+import { auth } from '@frontend/common/actions/security'
 import gql from 'graphql-tag'
-import { auth } from '@frontend/common/constants/security'
 import * as actions from '../constants'
 import stub from './stub'
 
@@ -35,25 +35,29 @@ export const login = () => async (dispatch, getState, client) => {
       },
     })
   } catch (e) {
-    dispatch({
-      type: actions.setErrors,
-      errors: {
-        email: e.message,
-        password: e.message,
-      },
-    })
+    dispatch(setErrors({
+      email: e.message,
+      password: e.message,
+    }))
 
     // just to give some time to see the errors
     setTimeout(() => {
-      dispatch({
-        type: auth,
-        token: stub.token,
-        expiresIn: stub.expiresIn,
-      })
-
-      dispatch({
-        type: actions.clear,
-      })
+      dispatch(auth(stub))
+      dispatch(clear())
     }, 800)
   }
 }
+
+export interface LoginErrors {
+  email: string | boolean
+  password: string | boolean
+}
+
+export const setErrors = (errors: Partial<LoginErrors>) => ({
+  type: actions.setErrors,
+  errors: { ...errors },
+})
+
+export const clear = () => ({
+  type: actions.clear,
+})
