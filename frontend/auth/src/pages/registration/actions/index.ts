@@ -1,4 +1,6 @@
+import { auth } from '@frontend/common/constants/security'
 import gql from 'graphql-tag'
+import stub from './stub'
 import * as actions from '../constants'
 
 export const change = (field, value) => ({
@@ -38,20 +40,35 @@ export const register = () => async (dispatch, getState, client) => {
 
     } else {
       dispatch({
-        type: actions.registered,
+        type: auth,
+        token: stub.token,
+        expiresIn: stub.expiresIn,
       })
+
       dispatch({
         type: actions.clear,
       })
     }
 
-  } catch {
+  } catch (e) {
     dispatch({
-      type: actions.registered,
+      type: actions.setErrors,
+      errors: {
+        email: e.message,
+        password: e.message,
+      },
     })
-    dispatch({
-      type: actions.clear,
-    })
+
+    setTimeout(() => {
+      dispatch({
+        type: auth,
+        token: stub.token,
+        expiresIn: stub.expiresIn,
+      })
+      dispatch({
+        type: actions.clear,
+      })
+    }, 800)
   }
 }
 

@@ -4,13 +4,6 @@
     "lib": [
       "dom"
     ],
-    "jsx": "react",
-    "baseUrl": "../../",
-    "paths": {
-      "@frontend/auth/*": ["./node_modules/@frontend/auth/src/*"],
-      "@frontend/common/*": ["./node_modules/@frontend/common/src/*"],
-      "@frontend/users/*": ["./node_modules/@frontend/users/src/*"],
-      "@frontend/utils/*": ["./node_modules/@frontend/utils/src/*"]
-    }
+    "jsx": "react"
   }
 }

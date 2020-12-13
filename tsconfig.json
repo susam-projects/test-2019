@@ -13,5 +13,12 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "preserveSymlinks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@frontend/auth/*": ["./node_modules/@frontend/auth/src/*"],
+      "@frontend/common/*": ["./node_modules/@frontend/common/src/*"],
+      "@frontend/users/*": ["./node_modules/@frontend/users/src/*"],
+      "@frontend/utils/*": ["./node_modules/@frontend/utils/src/*"]
+    }
   }
 }
