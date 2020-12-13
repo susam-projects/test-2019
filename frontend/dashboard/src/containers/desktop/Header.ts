@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { logout } from '@aunited/common/actions/security'
+import { logout } from '@frontend/common/actions/security'
 import Header from '../../components/desktop/Header'
 
 export default connect(

@@ -73,17 +73,17 @@ export const module = {
 export const resolve = {
   extensions: ['.ts', '.tsx', '.js', '.json'],
   alias: {
-    '@aunited/auth': '@frontend/auth/src',
-    '@aunited/common': '@frontend/common/src',
-    '@aunited/users': '@frontend/users/src',
-    '@aunited/utils': '@frontend/utils/src',
-    '@ui/button': '@ui/button/src',
-    '@ui/header': '@ui/header/src',
-    '@ui/input': '@ui/input/src',
-    '@ui/layout': '@ui/layout/src',
-    '@ui/link': '@ui/link/src',
-    '@ui/text': '@ui/text/src',
-    '@ui/theme': '@ui/theme/src',
+    '@frontend/auth': '@frontend/auth/src',
+    '@frontend/common': '@frontend/common/src',
+    '@frontend/users': '@frontend/users/src',
+    '@frontend/utils': '@frontend/utils/src',
+    // '@ui/button': '@ui/button/src',
+    // '@ui/header': '@ui/header/src',
+    // '@ui/input': '@ui/input/src',
+    // '@ui/layout': '@ui/layout/src',
+    // '@ui/link': '@ui/link/src',
+    // '@ui/text': '@ui/text/src',
+    // '@ui/theme': '@ui/theme/src',
   },
 }
 
