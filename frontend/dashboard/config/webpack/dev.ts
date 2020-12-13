@@ -5,6 +5,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export const mode = 'development'
 
+export const devtool = 'source-map'
+
 export const entry = ['@babel/polyfill', './src/index']
 
 export const output = {
@@ -21,7 +23,7 @@ export const module = {
       use: [
         {
           loader: 'babel-loader',
-          query: {
+          options: {
             babelrc: false,
             presets: [
               [
