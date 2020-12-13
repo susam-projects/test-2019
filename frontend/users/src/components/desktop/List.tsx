@@ -2,13 +2,14 @@ import React, { Fragment } from 'react'
 import { injectIntl, InjectedIntl } from 'react-intl'
 import { Column, Layout, Row } from '@ui/layout'
 import { Space, Text } from '@ui/text'
+import { Select, Option } from '@ui/select';
 import messages from '../../messages'
 
 interface Props {
   intl: InjectedIntl
 }
 
-const List = ({ rows, intl }: Props) => (
+const List = ({ rows, intl, onSortChange }: Props) => (
   <Column>
     <Layout basis={60} />
     <Row>
@@ -16,6 +17,24 @@ const List = ({ rows, intl }: Props) => (
       <Text weight='medium' size='l'>
         {intl.formatMessage(messages.users)}
       </Text>
+      <Layout basis='10%' />
+    </Row>
+    <Layout basis={20} />
+    <Row>
+      <Layout basis='10%' />
+      <Text>
+        {intl.formatMessage(messages.sortBy)}
+      </Text>
+      <Layout basis={20} />
+      <Layout basis={300}>
+        <Select onChange={onSortChange} defaultValue={'name'}>
+          <Option value={'id'}>id</Option>
+          <Option value={'name'}>имени</Option>
+          <Option value={'email'}>email</Option>
+          <Option value={'registeredAt'}>дате регистрации</Option>
+          <Option value={'lastLogonAt'}>дате последнего входа</Option>
+        </Select>
+      </Layout>
       <Layout basis='10%' />
     </Row>
     <Layout basis={20} />

@@ -29,8 +29,18 @@ export const load = () => async (dispatch, getState, client) => {
       type: actions.load,
       list: stub,
     })
+
+    dispatch({
+      type: actions.sort,
+      field: 'name',
+    })
   }
 }
+
+export const sort = (field: string) => ({
+  type: actions.sort,
+  field,
+})
 
 export const clear = () => ({
   type: actions.clear,

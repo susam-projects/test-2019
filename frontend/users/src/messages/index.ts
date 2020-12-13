@@ -7,6 +7,10 @@ export default defineMessages({
     id: `${namespace}.users`,
     defaultMessage: 'Пользователи',
   },
+  sortBy: {
+    id: `${namespace}.sortBy`,
+    defaultMessage: 'Сортировать по',
+  },
   at: {
     id: `${namespace}.at`,
     defaultMessage: 'в',

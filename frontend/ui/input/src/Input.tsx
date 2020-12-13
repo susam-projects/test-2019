@@ -1,7 +1,7 @@
 import React, { ChangeEvent, createElement, KeyboardEvent, useCallback } from 'react'
 import Wrapper from './Wrapper'
 import styled from '@emotion/styled'
-import {ifProp} from 'styled-tools'
+import { ifProp } from 'styled-tools'
 import ErrorText from './ErrorText'
 
 export interface InputElementProps {
@@ -30,7 +30,7 @@ const InputElement = styled('input', {
   shouldForwardProp: prop =>
     !['borderColor', 'error', 'transparent', 'select'].includes(prop),
 })<InputElementProps>(
-  ({color, borderColor, theme}) => ({
+  ({ color, borderColor, theme }) => ({
     width: '100%',
     height: 40,
     boxSizing: 'border-box',
@@ -61,11 +61,11 @@ const InputElement = styled('input', {
       backgroundColor: `${theme.colors.white}`,
     },
   }),
-  ifProp('disabled', ({theme}: any) => ({
+  ifProp('disabled', ({ theme }: any) => ({
     border: `1px solid ${theme.colors.blueHaze}`,
     color: `${theme.colors.blueHaze}`,
   })),
-  ifProp('error', ({theme}: any) => ({
+  ifProp('error', ({ theme }: any) => ({
     borderColor: `${theme.colors.red}`,
     [':hover']: {
       borderColor: `${theme.colors.red}`,
@@ -74,7 +74,7 @@ const InputElement = styled('input', {
       borderColor: `${theme.colors.red}`,
     },
   })),
-  ifProp('warning', ({theme}: any) => ({
+  ifProp('warning', ({ theme }: any) => ({
     borderColor: `${theme.colors.orange}`,
     [':hover']: {
       borderColor: `${theme.colors.orange}`,
@@ -98,12 +98,6 @@ const InputElement = styled('input', {
 )
 
 const Input = ({
-  id,
-  type,
-  disabled,
-  value,
-  placeholder,
-  readOnly,
   onChange,
   onKeyPress,
   onEnter,
@@ -128,12 +122,6 @@ const Input = ({
   return (
     <Wrapper>
       <InputElement
-        id={id}
-        type={type}
-        disabled={disabled}
-        value={value}
-        placeholder={placeholder}
-        readOnly={readOnly}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
         error={!!error}
