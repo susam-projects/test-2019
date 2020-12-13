@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { init } from '../actions/init'
+import { init } from '../actions'
 
 class Preload extends Component {
   componentDidMount() {
@@ -45,5 +45,5 @@ export default connect(
     onInit: () => dispatch(init()),
     onAuth: () => history.replace('/auth'),
     onMain: () => history.replace('/'),
-  })
+  }),
 )(Preload)

@@ -1,31 +1,5 @@
 import gql from 'graphql-tag'
 import * as actions from '../constants';
-import stub from './stub';
-
-export const load = () => async (dispatch, getState, client) => {
-  try {
-    const { data } = await client.query({
-      fetchPolicy: 'network-only',
-      query: gql`
-        query Me {
-          me {
-            id
-            email
-            profile {
-              firstName
-              lastName
-            }
-          }
-        }
-      `,
-    })
-  } catch (e) {
-    dispatch({
-      type: actions.load,
-      profile: stub,
-    })
-  }
-}
 
 export const save = () => async (dispatch, getState, client) => {
   try {
@@ -57,24 +31,21 @@ export const save = () => async (dispatch, getState, client) => {
       })
 
     } else {
-      // dispatch({
-      //   type: actions.saved,
-      // })
-
       dispatch({
-        type: actions.clear,
+        type: actions.saved,
       })
     }
-  } catch (e) {
-    // dispatch({
-    //   type: actions.saved,
-    // })
 
+  } catch (e) {
     dispatch({
-      type: actions.clear,
+      type: actions.saved,
     })
   }
 }
+
+export const cancel = () => ({
+  type: actions.cancel,
+})
 
 export const change = (field, value) => ({
   type: actions.change,

@@ -1,5 +1,7 @@
-export const load = '@@aunited/profile/LOAD'
+export const init = '@@aunited/profile/INIT'
 export const change = '@@aunited/profile/CHANGE'
 export const clear = '@@aunited/profile/CLEAR'
 export const setErrors = '@@aunited/profile/SET_ERRORS'
 export const save = '@@aunited/profile/SAVE'
+export const cancel = '@@aunited/profile/CANCEL'
+export const saved = '@@aunited/profile/SAVED'

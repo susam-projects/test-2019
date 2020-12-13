@@ -36,6 +36,11 @@ export const init = () => async (dispatch, getState, client) => {
   }
 }
 
+export const updateProfile = (profile) => ({
+  type: actions.updateProfile,
+  profile,
+})
+
 export const clear = () => ({
   type: actions.clear,
 })

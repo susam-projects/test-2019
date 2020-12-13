@@ -8,10 +8,12 @@ import { InjectedIntl, injectIntl } from "react-intl";
 import messages from "../../messages";
 
 interface Props {
+  defaultProfile?: any
   intl: InjectedIntl
 }
 
 const ProfileDesktop: FC<Props> = ({
+  defaultProfile,
   firstName,
   lastName,
   errors,
@@ -21,6 +23,17 @@ const ProfileDesktop: FC<Props> = ({
   onChangeLastName,
   intl,
 }) => {
+  if (firstName === undefined && defaultProfile && defaultProfile.firstName) {
+    queueMicrotask(() => {
+      onChangeFirstName(defaultProfile.firstName)
+    })
+  }
+  if (lastName === undefined && defaultProfile && defaultProfile.lastName) {
+    queueMicrotask(() => {
+      onChangeLastName(defaultProfile.lastName)
+    })
+  }
+
   return (
     <Column>
       <Layout basis={60} />
@@ -45,7 +58,7 @@ const ProfileDesktop: FC<Props> = ({
         <Input
           border='lightGray'
           error={errors.firstName}
-          value={firstName}
+          value={firstName || ''}
           onChange={onChangeFirstName}
           placeholder={intl.formatMessage(messages.firstNamePlaceholder)}
         />
@@ -65,7 +78,7 @@ const ProfileDesktop: FC<Props> = ({
         <Input
           border='lightGray'
           error={errors.lastName}
-          value={lastName}
+          value={lastName || ''}
           onChange={onChangeLastName}
           placeholder={intl.formatMessage(messages.lastNamePlaceholder)}
         />

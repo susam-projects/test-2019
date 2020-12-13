@@ -20,7 +20,7 @@ const Root = ({ store, persistor, history }: RootProps) => (
         <IntlProvider>
           <ThemeProvider>
             <Router history={history}>
-              <Routes />
+              <Routes history={history} />
             </Router>
           </ThemeProvider>
         </IntlProvider>
