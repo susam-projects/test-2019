@@ -36,13 +36,24 @@ export const login = () => async (dispatch, getState, client) => {
     })
   } catch (e) {
     dispatch({
-      type: auth,
-      token: stub.token,
-      expiresIn: stub.expiresIn,
+      type: actions.setErrors,
+      errors: {
+        email: e.message,
+        password: e.message,
+      },
     })
 
-    dispatch({
-      type: actions.clear,
-    })
+    // just to give some time to see the errors
+    setTimeout(() => {
+      dispatch({
+        type: auth,
+        token: stub.token,
+        expiresIn: stub.expiresIn,
+      })
+
+      dispatch({
+        type: actions.clear,
+      })
+    }, 800)
   }
 }

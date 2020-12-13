@@ -35,14 +35,22 @@ export const register = () => async (dispatch, getState, client) => {
         type: actions.setErrors,
         errors: data.register.errors,
       })
+
     } else {
       dispatch({
         type: actions.registered,
       })
+      dispatch({
+        type: actions.clear,
+      })
     }
+
   } catch {
     dispatch({
       type: actions.registered,
+    })
+    dispatch({
+      type: actions.clear,
     })
   }
 }

@@ -1,7 +1,8 @@
-import { ChangeEvent, createElement, KeyboardEvent, useCallback } from 'react'
+import React, { ChangeEvent, createElement, KeyboardEvent, useCallback } from 'react'
 import Wrapper from './Wrapper'
 import styled from '@emotion/styled'
 import {ifProp} from 'styled-tools'
+import ErrorText from './ErrorText'
 
 export interface InputElementProps {
   color?: string
@@ -106,6 +107,7 @@ const Input = ({
   onChange,
   onKeyPress,
   onEnter,
+  error,
   ...props
 }: InputProps) => {
 
@@ -123,20 +125,22 @@ const Input = ({
     }
   }, [onEnter, onKeyPress])
 
-  return createElement(
-    Wrapper,
-    {},
-    createElement(InputElement, {
-      id,
-      type,
-      disabled,
-      value,
-      placeholder,
-      readOnly,
-      onChange: handleChange,
-      onKeyPress: handleKeyPress,
-      ...props,
-    }),
+  return (
+    <Wrapper>
+      <InputElement
+        id={id}
+        type={type}
+        disabled={disabled}
+        value={value}
+        placeholder={placeholder}
+        readOnly={readOnly}
+        onChange={handleChange}
+        onKeyPress={handleKeyPress}
+        error={!!error}
+        {...props}
+      />
+      {error && <ErrorText>{error}</ErrorText>}
+    </Wrapper>
   )
 }
 
