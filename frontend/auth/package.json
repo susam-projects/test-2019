@@ -5,5 +5,8 @@
   "peerDependencies": {
     "react": "16.8.6",
     "react-router-dom": "5.0.0"
+  },
+  "dependencies": {
+    "typescript": "^4.1.3"
   }
 }

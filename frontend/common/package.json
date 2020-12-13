@@ -5,5 +5,8 @@
   "license": "MIT",
   "peerDependencies": {
     "redux-persist": "5.10.0"
+  },
+  "dependencies": {
+    "typescript": "^4.1.3"
   }
 }

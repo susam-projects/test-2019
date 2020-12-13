@@ -8,6 +8,7 @@
     "react": "16.8.6"
   },
   "dependencies": {
-    "styled-system": "5.0.6"
+    "styled-system": "5.0.6",
+    "typescript": "^4.1.3"
   }
 }
