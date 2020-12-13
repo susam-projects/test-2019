@@ -20,7 +20,7 @@ export interface ChangeAction extends Action {
   value: unknown
 }
 
-export interface ClearAction extends Action {}
+export type ClearAction = Action
 
 export interface SetErrorsAction extends Action {
   errors: Partial<LoginStateErrors>

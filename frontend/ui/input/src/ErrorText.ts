@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const ErrorText = styled('div')<{}>(({ theme }) => ({
   color: `${theme.colors.red}`,

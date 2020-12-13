@@ -10,7 +10,7 @@ export const createReducer = <
   TAction extends Action<TType>
 >(
   initialState: TState,
-  reducers: Reducers<TState, TType, TAction>
+  reducers: Reducers<TState, TType, TAction>,
 ) => (state = initialState, action: TAction) => {
   const handler = reducers[action.type]
   const newState = handler ? handler(state, action) : state

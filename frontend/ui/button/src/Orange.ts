@@ -27,7 +27,7 @@ const Orange = styled(ButtonUi)<ButtonProps>(
     background: theme.colors.white,
     border: `1px solid ${theme.colors.blueHaze}`,
     boxShadow: 'none !important',
-  }))
+  })),
 )
 
 const Button = ({ disabled, onClick, children, ...props }: ButtonProps) =>
@@ -40,10 +40,11 @@ const Button = ({ disabled, onClick, children, ...props }: ButtonProps) =>
       onClick: disabled ? null : onClick,
       ...props,
     },
-    children
+    children,
   )
 
 Button.defaultProps = {
+  // tslint:disable-next-line:no-empty
   onClick: () => {},
 }
 

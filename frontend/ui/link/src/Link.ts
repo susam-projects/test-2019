@@ -25,7 +25,7 @@ const Link = styled(Text.withComponent('a'), {
     [':hover']: {
       textDecoration: 'none',
     },
-  })
+  }),
 )
 
 export default Link

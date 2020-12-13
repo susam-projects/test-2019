@@ -9,5 +9,5 @@ export default connect(
   }),
   dispatch => ({
     onLogout: () => dispatch(logout()),
-  })
+  }),
 )(Header)

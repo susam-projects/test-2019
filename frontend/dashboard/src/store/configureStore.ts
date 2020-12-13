@@ -9,7 +9,7 @@ const configureStore = (initialState, history) => {
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
   const enhancer = composeEnhancers(
-    applyMiddleware(routerMiddleware(history), api(history))
+    applyMiddleware(routerMiddleware(history), api(history)),
   )
 
   const store = createStore(rootReducer, initialState, enhancer)

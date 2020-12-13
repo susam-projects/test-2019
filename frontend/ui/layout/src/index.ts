@@ -37,7 +37,7 @@ export const Column = styled('div', { shouldForwardProp })<ColumnProps>(
   flexBasis,
   flexGrow,
   flexWrap,
-  fill
+  fill,
 )
 
 export const Row = styled('div', { shouldForwardProp })<RowProps>(
@@ -51,7 +51,7 @@ export const Row = styled('div', { shouldForwardProp })<RowProps>(
   flexBasis,
   flexGrow,
   flexWrap,
-  fill
+  fill,
 )
 
 const Layout = styled.div<LayoutProps>(
@@ -62,7 +62,7 @@ const Layout = styled.div<LayoutProps>(
   justifyContent,
   flexBasis,
   flexGrow,
-  flexShrink
+  flexShrink,
 )
 
 Layout.defaultProps = {

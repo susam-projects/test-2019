@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import * as actions from '../constants';
+import * as actions from '../constants'
 
 export const save = () => async (dispatch, getState, client) => {
   try {

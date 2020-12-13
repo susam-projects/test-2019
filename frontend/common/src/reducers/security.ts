@@ -1,4 +1,4 @@
-import { Action } from "redux";
+import { Action } from 'redux'
 import storage from 'redux-persist/lib/storage'
 import { persistReducer } from 'redux-persist'
 import { createReducer } from '@utils/reducer'

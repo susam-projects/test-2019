@@ -1,4 +1,4 @@
-import { auth } from '@frontend/common/actions/security';
+import { auth } from '@frontend/common/actions/security'
 import gql from 'graphql-tag'
 import stub from './stub'
 import * as actions from '../constants'
